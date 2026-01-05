@@ -285,11 +285,11 @@ def read_fasta(fasta_file):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Topo-GALA Predictor")
     parser.add_argument("--fasta", type=str, required=True, help="Input FASTA file")
-    parser.add_argument("--model", type=str, default="checkpoints_v3/best_model_v3.pth", help="Path to trained model")
-    parser.add_argument("--go_list", type=str, default="../data/unique_go_ids_filtered_expanded.txt", help="Path to GO ID list used in training")
-    parser.add_argument("--obo", type=str, default="../data/go.obo", help="Path to go.obo file")
+    parser.add_argument("--model", type=str, default="checkpoints/best_model.pth", help="Path to trained model")
+    parser.add_argument("--go_list", type=str, default="data/unique_go_ids_filtered_expanded.txt", help="Path to GO ID list used in training")
+    parser.add_argument("--obo", type=str, default="data/go.obo", help="Path to go.obo file")
     parser.add_argument("--output", type=str, default="predictions.csv", help="Output CSV file")
-    parser.add_argument("--threshold", type=float, default=0.5, help="Probability threshold")
+    parser.add_argument("--threshold", type=float, default=0.3, help="Probability threshold")
     parser.add_argument("--batch_size", type=int, default=2, help="Inference batch size")
     
     args = parser.parse_args()
