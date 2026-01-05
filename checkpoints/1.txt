@@ -1,0 +1,2 @@
+Due to GitHub's file size limit, we have uploaded the model weights to Baidu Drive instead. Link: 通过网盘分享的文件：best_model.pth
+链接: https://pan.baidu.com/s/1ynGaP_pToRdthzRa7ywrsg?pwd=7aby 提取码: 7aby 复制这段内容后打开百度网盘手机App，操作更方便哦
