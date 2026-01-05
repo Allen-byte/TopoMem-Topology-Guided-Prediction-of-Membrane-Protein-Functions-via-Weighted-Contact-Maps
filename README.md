@@ -20,6 +20,16 @@ Based on the original data file, the GO annotations of the sequence are expanded
 
 We removed those proteins without domains from InterPro database that left us 44539 records.
 
+- unique_go_ids_filtered_expanded.txt  
+GO term set obtained after expanding the filtered GO terms with their parent ontologies; the expanded set contains 11,963 terms.
+
+- *_ids_clean.txt  
+Dataset with samples that lack contact maps or failed processing removed; this is the final dataset used for subsequent work.  
+(train: –877, val: 420, test: 353; a total of 1,650 failed samples are discarded, leaving 19,124 + 11,463 + 11,517 = 42,104 samples.)
+
+- dataset_stats.json  
+Statistical information of the dataset, including sequence-length distribution, GO-term count distribution, etc.
+
 ## Quick Start
 
 ### 1. Environment Setup
@@ -28,9 +38,9 @@ We removed those proteins without domains from InterPro database that left us 44
 - GPU (CUDA) recommended for faster inference
 
 ### 2. Download Required Files
-- Model weights: `checkpoints_v3/best_model_v3.pth`
+- Model weights: `checkpoints/best_model.pth`(this file is our trained model weight, you can do mambrane protein function predictions based on it or finetune it for more special downstream tasks)
 - GO ID list: `data/unique_go_ids_filtered_expanded.txt`
-- GO OBO file (for name resolution): `data/go.obo`
+- GO OBO file (for name resolution): `data/go.obo`(make sure you have downloaded the go.obo file here, not `go-basic.obo`!)
 
 ### 3. Test Samples
 Save the following content as `test_samples.fasta`:
@@ -53,7 +63,7 @@ MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPL
 ```bash
 python predict.py \
   --fasta test_samples.fasta \
-  --model checkpoints_v3/best_model_v3.pth \
+  --model checkpoints/best_model.pth \
   --go_list data/unique_go_ids_filtered_expanded.txt \
   --obo data/go.obo \
   --output predictions.csv \
@@ -84,8 +94,6 @@ Below are actual predictions for the test samples (top terms, sorted by score). 
 
 ### 2. Chicken Lysozyme C - Antimicrobial Enzyme
 
-
-
 **Highlight**: Correctly identifies hydrolase activity and extracellular localization (reasonable), though the most specific "lysozyme activity (GO:0003796)" is not top-ranked—tends toward broader terms.
 
 | Rank | GO_ID      | Name                                   | Score  |
@@ -98,8 +106,6 @@ Below are actual predictions for the test samples (top terms, sorted by score). 
 
 ### 3. Bovine Pancreatic Ribonuclease - RNA Degrading Enzyme
 
-
-
 **Highlight**: Accurately captures defense responses and nucleic acid catalysis, consistent with the known antibacterial role of the RNase A family.
 
 | Rank | GO_ID      | Name                                           | Score  |
@@ -111,8 +117,6 @@ Below are actual predictions for the test samples (top terms, sorted by score). 
 | 5    | GO:0042742 | defense response to bacterium                  | 0.9362 |
 
 ### 4. Human Proinsulin - Hormone
-
-
 
 **Highlight**: Strongly predicts regulation and metabolic processes, aligning with insulin's role in signaling and glucose homeostasis (UniProt P01308).
 
