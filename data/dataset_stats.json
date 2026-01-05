@@ -1,0 +1,63 @@
+{
+  "total_proteins": 42104,
+  "split_counts": {
+    "train": 19124,
+    "valid": 11463,
+    "test": 11517
+  },
+  "total_go_terms": 10629,
+  "sequence_stats": {
+    "min": 50,
+    "max": 1024,
+    "mean": 448.0247719931598,
+    "median": 421.0,
+    "std": 224.5760886819988,
+    "q25": 275.0,
+    "q75": 587.0
+  },
+  "label_stats": {
+    "proteins_per_go": {
+      "min": 1,
+      "max": 17049,
+      "mean": 55.834038950042334,
+      "median": 18.0,
+      "std": 281.6044576790175
+    },
+    "gos_per_protein": {
+      "min": 1,
+      "max": 247,
+      "mean": 14.095097852935588,
+      "median": 10.0,
+      "std": 13.991241074846775
+    },
+    "sparsity": 0.0013260982080097459
+  },
+  "namespace_stats": {
+    "MF": {
+      "train": 84554,
+      "valid": 50005,
+      "test": 49972,
+      "total": 184531
+    },
+    "BP": {
+      "train": 139291,
+      "valid": 76649,
+      "test": 79911,
+      "total": 295851
+    },
+    "CC": {
+      "train": 87070,
+      "valid": 52337,
+      "test": 52289,
+      "total": 191696
+    }
+  },
+  "overlap": {
+    "train_valid": 8005,
+    "train_test": 8050,
+    "valid_test": 7342,
+    "only_train": 695,
+    "only_valid": 300,
+    "only_test": 315
+  }
+}
