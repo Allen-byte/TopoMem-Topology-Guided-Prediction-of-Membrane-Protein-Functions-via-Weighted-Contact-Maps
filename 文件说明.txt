@@ -1,43 +1,11 @@
-unique_go_ids.txt
-
-原始的全部GO术语集合，大约在两万量级
-
-unique_go_ids_expanded.txt
-
-在原始GO术语集合的基础上，添加其父术语得到的GO术语集合
-
-unique_go_ids_filtered.txt
-
-针对原始数据集样本进行筛选（筛选条件：样本具有的GO术语数量不得少于10，样本出现的次数不得少于20次，GO术语出现的次数不得少于10次）后得到的GO术语集合，在8568量级
-
-train_ids.txt/val_ids.txt/test_ids.txt
-
-针对筛选后的数据集，在使用cd-hit聚类后的基础上，划分的训练、验证和测试集
-
-pse_go_embeds.npy
-
-使用语言模型生成的初始GO术语节点嵌入表示
-
-seha_go_embeds.npy
-
-原始GO嵌入表示经过GNN传播后的嵌入表示
-
 unique_go_ids_filtered_expanded.txt
 
 筛选后的GO术语经过Ontology扩充父术语后得到的术语集合，扩充后数量在11963
 
-seha_gnn_model.pth
+*_ids_clean.txt
 
-训练后的seha-go模型权重
+移除没有接触图/失败样本后的数据集，也是我们最终用于后续处理的数据集（train：-877，val：420，test：353，共计1650个失败的样本将被舍弃，剩下数据集：19124+11463+11517=42104）
 
-seha_go_trained.npy
+dataset_stats.json
 
-训练后的seha_go的嵌入矩阵（理论上性能应该比seha_go_embeds.npy好）
-
-*_clean.txt
-
-是移除没有接触图或者失败样本后的数据集，也是我们最终用于后续处理的数据集（train：-877，val：420，test：353，共计1650个失败的样本将被舍弃，剩下数据集：19142+11463+11517=42122）
-
-dataset_analysis.py
-
-统计数据集的信息数据
+数据集的统计信息，包括样本的长度分布、GO术语的数量分布等等
